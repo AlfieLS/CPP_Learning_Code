@@ -16,6 +16,23 @@ public:
     unsigned int get_age() const { return _age; }
 };
 
+class Toto
+{
+public:
+    Toto()
+        : _value1(3)
+        , _value2(5)
+    {}
+
+    Toto(const int v1)
+        : _value1(v1)
+    {}
+
+private:
+    int _value1;
+    int _value2;
+};
+
 int main()
 {
     Person p;
