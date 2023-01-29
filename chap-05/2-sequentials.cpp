@@ -1,6 +1,9 @@
 #include <array>
 #include <iostream>
 #include <list>
+#include <stack>
+#include <string>
+#include <vector>
 
 enum Fruit
 {
@@ -14,11 +17,11 @@ enum Fruit
 
 void try_arrays()
 {
-    std::array<std::string, Fruit_Count> fruit_names;
-    fruit_names[Apricot]   = "apricot";
-    fruit_names[Cherry]    = "cherry";
-    fruit_names[Mango]     = "mango";
-    fruit_names[Raspberry] = "raspberry";
+    std::array<std::string, Fruit_Count> array;
+    array[Apricot]   = "apricot";
+    array[Cherry]    = "cherry";
+    array[Mango]     = "mango";
+    array[Raspberry] = "raspberry";
 }
 
 void try_lists()
@@ -26,20 +29,38 @@ void try_lists()
     std::list<int> l1;
     std::list<int> l2;
     std::list<int> l3;
-    std::list<int> l4;
-    l1.assign(5, 1);
-    l2.assign(5, 2);
-    l3.assign(5, 3);
-    l4.assign(5, 4);
-    for (auto v : l1)
+    std::list<int> l4 = { 7, 8, 9 };
+
+    l1.assign({ 0, 1, 2 });
+    l2.assign(3, 3);
+    l3.emplace_back(4);
+    l3.emplace_back(5);
+    l3.emplace_back(6);
+
+    l1.sort();
+    l2.sort();
+    l1.merge(l2);
+
+    l3.sort();
+    l4.sort();
+    l3.merge(l4);
+
+    for (auto l : l1)
     {
-        std::cout << v << std::endl;
+        std::cout << l << std::endl;
     }
+
+    auto mid = l1.begin();
+    std::advance(mid, l1.size() / 2);
+    l1.splice(mid, l3);
 }
 
 void try_stacks()
 {
-    // Implement stack tests here.
+    std::stack<int, std::vector<int>> stack;
+    stack.emplace(0);
+    stack.emplace(1);
+    stack.emplace(2);
 }
 
 int main()
